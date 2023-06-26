@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  },
+  "name": "backendprimeraentrega",
+  "description": "",
+  "version": "1.0.0",
+  "main": "servidorHttp.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node servidorHttp.js",
+    "dev": "nodemon servidorHttp.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
