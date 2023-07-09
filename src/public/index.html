@@ -8,12 +8,16 @@
 <body>
     
 <h1>Bienvenidos</h1>
-<form action="/api/product" method="post">
+<form action="/api/carts" method="post" enctype="multipart/form-data"> <!-- enctype: recibe cualquier tipo de datos -->
     <label for=""> Nombre : </label>
     <input name="Nombre">
     <label for="">Marca :</label>
     <input name="Marca">
+
+    <label for="">imagen</label>
+    <input type="file" name="image">
+    <input type="submit">
 </form>
 
 </body>
-</html>
+</html> 
