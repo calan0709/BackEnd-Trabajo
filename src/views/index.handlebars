@@ -1,0 +1,15 @@
+<div>
+    <h1>Hola {{user.name}}, que tengas buen dia!</h1>
+    {{#if isAdmin}} {{!-- si es admin, renderiza food --}}
+        {{#each food}}
+        <div>
+            <p>{{this.name}}</p>
+            <p>{{this.price}}</p>
+        </div>
+        {{/each}}
+    {{else}}
+        <p>no tienes permiso</p> {{!-- si el usuario no es admin, renderiza P --}}
+    {{/if}}
+</div>
+
+<script src="/src/public/js/index.js"></script>
