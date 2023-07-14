@@ -4,7 +4,9 @@ import express  from "express";
 //import cartsRouter from './routes/carts.router.js';
 import __dirname from "./utils.js";
 import viewsRouter from './routes/views.router.js';
+import usersRouter from './routes/users.router.js';
 import handlebars from 'express-handlebars';
+
 
 const app = express(); //iniciamos express con la variable APP, la cual contendra todas las funcionalidades de la dependencia.
 //app recibe la peticion, va a reconocer la peticion de tipo usuario y va a redirijirla al archivo product.router.js
@@ -22,5 +24,6 @@ app.set('view engine', 'handlebars');//estamos trabajando con "handlebars"
 //app.use('/api/product', productRouter);// con esta linea de codigo ya me puedo conectar a los miniaplicativos
 //app.use('/api/carts', cartsRouter);
 app.use('/', viewsRouter);
+app.use('/api/users', usersRouter)
 
 app.listen(8080, ()=> console.log("listening 8080")); //y esa aplicacion de espress esta escuchando en un puerto
