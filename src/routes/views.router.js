@@ -3,13 +3,13 @@ import { Router } from "express";
 
 const router = Router();
 
-
-/* app.get ('/', (req,res)=>{
+/* //clase motores de plantillas
+app.get ('/', (req,res)=>{
     const user = {
         name : 'Santiago del moro'
     };
     res.render('index',user)//renderiza en el archivo INDEX el dato que esta en USER
-}) */
+}) 
 const food = [ //crea objeto con nombre food
     {name:"pizza", price:1000},
     {name:"hambuergesa", price:500},
@@ -31,6 +31,11 @@ router.get('/', (req, res)=>{
 
 router.get('/register', (req, res)=>{
     res.render('register');
+}) */
+
+//Clase Websockets
+router.get('/', (req, res)=>{
+    res.render('index')
 })
 
 export default router;

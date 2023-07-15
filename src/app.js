@@ -1,10 +1,10 @@
 import express  from "express";
-//import { Server } from "socket.io";
+import { Server } from "socket.io";
 //import productRouter from './routes/product.router.js';
 //import cartsRouter from './routes/carts.router.js';
 import __dirname from "./utils.js";
 import viewsRouter from './routes/views.router.js';
-import usersRouter from './routes/users.router.js';
+//import usersRouter from './routes/users.router.js';
 import handlebars from 'express-handlebars';
 
 
@@ -26,4 +26,9 @@ app.set('view engine', 'handlebars');//estamos trabajando con "handlebars"
 app.use('/', viewsRouter);
 app.use('/api/users', usersRouter)
 
-app.listen(8080, ()=> console.log("listening 8080")); //y esa aplicacion de espress esta escuchando en un puerto
+const server = app.listen(8080, ()=> console.log("listening 8080")); //y esa aplicacion de espress esta escuchando en un puerto
+const io = new Server (server)
+
+io.on('connection', socket =>{
+    console.log('nuevo cliente conectado')
+})
