@@ -1,5 +1,5 @@
 import express  from "express";
-import { Server } from "socket.io";
+import {Server} from "socket.io";
 //import productRouter from './routes/product.router.js';
 //import cartsRouter from './routes/carts.router.js';
 import __dirname from "./utils.js";
@@ -21,14 +21,36 @@ app.set('views', `${__dirname}/views`);// en que directorio estoy trabajando "VI
 app.set('view engine', 'handlebars');//estamos trabajando con "handlebars"
 
 
+app.use ('/', viewsRouter);
 //app.use('/api/product', productRouter);// con esta linea de codigo ya me puedo conectar a los miniaplicativos
 //app.use('/api/carts', cartsRouter);
-app.use('/', viewsRouter);
-app.use('/api/users', usersRouter)
+//app.use('/api/users', usersRouter)
 
 const server = app.listen(8080, ()=> console.log("listening 8080")); //y esa aplicacion de espress esta escuchando en un puerto
-const io = new Server (server)
+const io = new Server (server);
 
-io.on('connection', socket =>{
-    console.log('nuevo cliente conectado')
+/* io.on('connection', socket => { //on escucha un evento del cliente en este caso el evento es connection--- establecer conexion cliente servidor
+    console.log('nuevo cliente conectado');
+
+    socket.on("message", data =>{//el evento a escuchar es message --
+        console.log(data)//data recibe el mensaje del cliente y lo muestra
+    })
+
+    socket.emit('event_socket_indvidual', "este mensaje es solo para el socket")
+
+    socket.broadcast.emit('evento_todos_menos_actual', "lo veran todos menos actual")
+
+    io.emit('todos',"lo ven todos los usuarios")
+}) */
+
+const logs = []
+
+io.on('connection',socket=>{
+    console.log('conectado')
+    socket.on('message1',data=>{
+        io.emit('log',data)
+    })
+    
 })
+
+

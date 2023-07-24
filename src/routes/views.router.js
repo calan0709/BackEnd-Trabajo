@@ -3,6 +3,12 @@ import { Router } from "express";
 
 const router = Router();
 
+router.get('/', (req, res)=>{
+    res.render('home')// renderiza archivo
+})
+
+export default router;
+
 /* //clase motores de plantillas
 app.get ('/', (req,res)=>{
     const user = {
@@ -34,8 +40,3 @@ router.get('/register', (req, res)=>{
 }) */
 
 //Clase Websockets
-router.get('/', (req, res)=>{
-    res.render('index')
-})
-
-export default router;

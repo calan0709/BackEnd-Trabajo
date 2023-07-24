@@ -1,0 +1,3 @@
+//cliente
+const socket = io();
+
