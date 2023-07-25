@@ -14,3 +14,10 @@ socket.on('evento_todos_menos_actual',data =>{
 socket.on('todos', data=>{
     console.log(data)
 })
+
+//cartel emergente
+/* Swal.fire({
+    title: 'saludos',
+    text: 'Mensaje inicial',
+    icon: 'succes'
+})  */
