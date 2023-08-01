@@ -43,6 +43,9 @@ const io = new Server (server);
     io.emit('todos',"lo ven todos los usuarios")
 }) */
 
+
+//implementando chat
+
 const logs = []
 
 io.on('connection',socket=>{
@@ -53,4 +56,4 @@ io.on('connection',socket=>{
     
 })
 
-
+//seguir la clase de aplicacion chat minuto 01:05
