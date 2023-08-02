@@ -27,6 +27,7 @@ Swal.fire({
     user= result.value;
     socket.emit ('authenticated',user)
 })
+
 // escuchando el input
 chatbox.addEventListener('keyup', evt =>{
     if(evt.key ==='Enter'){ //si el evento es igual a enter enviamos el mensaje al servidor
@@ -37,3 +38,25 @@ chatbox.addEventListener('keyup', evt =>{
     }
 }) 
 
+//escucha al servidor
+socket.on('messagelogs', data => {
+    let log = document.getElementById('messagelogs');
+    let messages = ''; 
+    data.forEach(message=> { //recorre el mensaje 
+        messages += `${message.user} dice: ${message.message}<br/>`
+    });
+        
+    log.innerHTML = messages;
+});
+
+//cada vez que se canecte un nuevo usuario, que muestre un modal
+socket.on('newUserConnected', data =>{
+    Swal.fire({
+        toast:true,
+        position: 'top-end',
+        showConfirmationButton: false,
+        timer: 3000,
+        title:`${data} se ha unido al chat`,
+        icon: 'success'
+    })
+})

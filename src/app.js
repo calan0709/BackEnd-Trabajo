@@ -46,14 +46,22 @@ const io = new Server (server);
 
 //implementando chat
 
-const logs = []
 
-io.on('connection',socket=>{
-    console.log('conectado')
-    socket.on('message1',data=>{
-        io.emit('log',data)
+const messages = [];
+
+io.on('connection',socket=>{ 
+    console.log('Nuevo Cliente Conectado');
+
+    socket.on('message',data=>{ 
+        messages.push(data); //almacena mensajes en erreglo
+        io.emit('messagelogs',messages); //reenvia los mensajes almacenados
+    });
+    //conecion de nuevo usuario cartel
+    socket.on ('authenticated', data =>{
+        socket.emit('messageLogs', messages);
+        socket.broadcast.emit('newUserConnected', data);
     })
     
 })
 
-//seguir la clase de aplicacion chat minuto 01:05
+
